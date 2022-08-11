@@ -1,0 +1,48 @@
+button {
+    background: transparent;
+    border: unset;
+    outline: unset;
+    cursor: pointer;
+
+    &:focus {
+        outline: unset;
+    } 
+}
+
+.action-btns {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 20px;
+
+    .action-btn {
+        width: 24%;
+        color: var(--primary-color);
+        font-size: 12px;
+        font-weight: 500;
+
+        &:active {
+            color: var(--accent-color);
+        }
+    }
+
+    .invalid-btn {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+}
+
+
+.btn-active {
+    color: var(--accent-color)!important;
+}
+
+.mat-button-toggle-label-content {
+    line-height: 28px!important;
+    padding: 0 5px!important;
+}
+
+.mat-button-toggle-checked {
+    background-color: var(--secondary-color)!important;
+    color: var(--primary-color)!important;
+}

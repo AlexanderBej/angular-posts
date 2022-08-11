@@ -1,0 +1,29 @@
+<div class="main-page">
+    <button type="button" title="Go back" (click)="goBack()" class="go-back-btn">
+        <span class="material-symbols-outlined">arrow_back</span>
+        Go back
+    </button>
+    <header>
+        <div class="post-id">{{postID}}</div>
+        <h2 [title]="post.title">{{post.title}}</h2>
+    </header>
+    <aside class="user-box">
+        <div mat-card-avatar title="View author details" (click)="openUserDetailsModal()" class="user-avatar">{{user?.name | initials}}</div>
+        <div class="user-details">
+            <span class="name">{{user?.name}}</span>
+            <span class="email">{{user?.email}}</span>
+            <span class="city">{{user?.address?.city}}</span>
+        </div>
+    </aside>
+    <section class="post-body">
+        <p>{{post.body}}</p>
+    </section>
+    <section class="action-btns">
+        <button type="button" (click)="editPost()" class="action-btn comment-btn" title="Edit post">Edit</button>
+        <mat-divider [vertical]="true"></mat-divider>
+        <button type="button" (click)="removePost()" class="action-btn comment-btn" title="Delete post">Delete</button>
+    </section>
+    <section class="comments-container">
+        <app-comments [comments]="comments" [postID]="postID"></app-comments>
+    </section>
+</div>

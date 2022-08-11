@@ -1,0 +1,17 @@
+// used for pagination in home component
+.ngx-pagination a,
+.ngx-pagination button {
+  margin: 0 2px;
+}
+
+.ngx-pagination a:hover,
+.ngx-pagination button {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+ 
+}
+
+.ngx-pagination .current {
+  background: var(--secondary-color) !important;
+  color: var(--primary-color) !important;
+  border-radius: var(--container-border-radius);
+}

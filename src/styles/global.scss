@@ -1,0 +1,11 @@
+html, body { height: 100%; }
+body { margin: 0; font-family: "Montserrat", sans-serif; }
+
+p {
+    white-space: pre-wrap;
+}
+
+.mat-progress-spinner circle,
+.mat-spinner circle {
+    stroke: var(--accent-color);
+}

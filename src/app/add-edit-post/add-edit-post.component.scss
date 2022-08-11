@@ -1,0 +1,16 @@
+.loader {
+    margin-top: 150px;
+}
+
+.main-page {
+    padding: 50px 20%;
+    margin-top: 50px;
+
+    .post-form {
+        display: grid;
+
+        .body-field textarea {
+            min-height: 100px;
+        }
+    }
+}

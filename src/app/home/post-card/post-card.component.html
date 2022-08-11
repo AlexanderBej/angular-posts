@@ -1,0 +1,14 @@
+<mat-card>
+    <div class="post-container">
+        <div class="post-id">{{post?.id}}</div>
+        <div class="post-title">
+            <h3 [title]="post?.title">{{post?.title}}</h3>
+        </div>
+        <mat-card-content>
+            <p>{{post?.body}}</p>
+        </mat-card-content>
+        <footer>
+            <button type="button" (click)="openPostDetails()" class="card-btn" title="View details">View details</button>
+        </footer>
+    </div>
+</mat-card>

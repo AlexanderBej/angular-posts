@@ -1,0 +1,32 @@
+<div class="user-modal-container">
+    <header>{{user?.name}}</header>
+    <div class="user-modal-body">
+        <span class="detail-line">
+            <span class="material-symbols-outlined">mail</span>
+        <strong>{{user?.email}}</strong>
+        </span>
+        <span class="detail-line">
+            <span class="material-symbols-outlined">call</span>
+        <strong>{{user?.phone}}</strong>
+        </span>
+        <span class="detail-line">
+            <span class="material-symbols-outlined">language</span>
+        <strong>{{user?.website}}</strong>
+        </span>
+        <div class="detail-box">
+            <h4>Address</h4>
+            <span>City: <strong>{{user?.address?.city}}</strong></span>
+            <span>Street: <strong>{{user?.address?.street}}</strong></span>
+            <span>Zipcode: <strong>{{user?.address?.zipcode}}</strong></span>
+        </div>
+        <div class="detail-box">
+            <h4>Company</h4>
+            <span>Name: <strong>{{user?.company?.name}}</strong></span>
+            <span>Catchphrase: <strong>{{user?.company?.catchPhrase}}</strong></span>
+        </div>
+    </div>
+
+    <div class="action-btns">
+        <button type="button" (click)="activeModal.close()" class="action-btn" title="Close">Close</button>
+    </div>
+</div>

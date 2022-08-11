@@ -1,0 +1,13 @@
+.custom-toast {
+    border-radius: var(--container-border-radius);
+    color: white;
+    font-weight: 300;
+}
+  
+.custom-error {
+    background-color: var(--error-color);
+}
+  
+.custom-success {
+    background-color: var(--success-color);
+}

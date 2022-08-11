@@ -1,0 +1,52 @@
+<h1>Comments</h1>
+<div *ngIf="!isAddCommentBoxOpen" class="comment-box add-comment-btn">
+    <span (click)="isAddCommentBoxOpen = !isAddCommentBoxOpen" class="material-symbols-outlined add-icon"
+        title="Add new comment">add</span>
+</div>
+<div *ngIf="isAddCommentBoxOpen" class="comment-box add-comment-box">
+    <h4>Add a new comment</h4>
+    <form [formGroup]="commentForm">
+        <div class="top-row">
+            <mat-form-field appearance="outline" class="field name-field">
+                <mat-label>Title</mat-label>
+                <input type="text" matInput formControlName="name" required>
+                <mat-error *ngIf="!nameInput?.value">Title field is mandatory!</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="field email-field">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="email" required>
+                <mat-error *ngIf="!emailInput?.value">Email field is mandatory!
+                </mat-error>
+                <mat-error *ngIf="emailInput?.hasError('email')">Wrong email format
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <mat-form-field appearance="outline" class="field body-field">
+            <mat-label>Body</mat-label>
+            <textarea matInput formControlName="body" required></textarea>
+            <mat-error *ngIf="!bodyInput?.value">Body field is mandatory!</mat-error>
+        </mat-form-field>
+    </form>
+    <div class="action-btns">
+        <button type="submit" [ngClass]="{'invalid-btn': commentForm.invalid}" (click)="saveComment()"
+            class="action-btn" title="Save">Save</button>
+        <mat-divider [vertical]="true"></mat-divider>
+        <button type="button" (click)="cancelAddComment()" class="action-btn" title="Cancel">Cancel</button>
+    </div>
+</div>
+<div class="comment-box" *ngFor="let comm of comments">
+    <span class="material-symbols-outlined user-icon">person</span>
+    <div class="details">
+        <h4>{{comm.name}}</h4>
+        <span class="user-email">
+            {{comm.email}}
+        </span>
+        <p>{{comm.body}}</p>
+        <div class="action-btns">
+            <button type="button" (click)="sendCommToEdit(comm)" class="action-btn" title="Edit comment">Edit</button>
+            <mat-divider [vertical]="true"></mat-divider>
+            <button type="button" (click)="removeComment(comm)" class="action-btn"
+                title="Delete comment">Delete</button>
+        </div>
+    </div>
+</div>

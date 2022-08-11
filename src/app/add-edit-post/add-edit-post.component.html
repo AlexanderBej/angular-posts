@@ -1,0 +1,39 @@
+<div class="loader" *ngIf="loadingData; else loaded">
+    <app-spinner [diameter]="200"></app-spinner>
+</div>
+
+<ng-template #loaded>
+    <div class="main-page">
+        <h1 *ngIf="postID === undefined">Add a new post</h1>
+        <h1 *ngIf="postID !== undefined">Edit post {{postID}}</h1>
+        <div class="post-container">
+            <form class="post-form" [formGroup]="postForm">
+                <mat-form-field appearance="outline" class="field title-field">
+                    <mat-label>Title</mat-label>
+                    <input type="text" matInput formControlName="title" required>
+                    <mat-error *ngIf="!titleInput?.value">Title field is mandatory!</mat-error>
+                </mat-form-field>
+                <mat-form-field class="field user-field" appearance="outline">
+                    <mat-label>User</mat-label>
+                    <mat-select formControlName="user" aria-required="true">
+                        <mat-option *ngFor="let user of userList" [value]="user">
+                            {{user.name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="userInput?.invalid">User is mandatory!</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="field body-field">
+                    <mat-label>Body</mat-label>
+                    <textarea matInput formControlName="body" required></textarea>
+                    <mat-error *ngIf="!bodyInput?.value">Body field is mandatory!</mat-error>
+                </mat-form-field>
+            </form>
+            <div class="action-btns">
+                <button type="submit" (click)="save()" [ngClass]="{'invalid-btn': postForm.invalid}" class="action-btn"
+                    title="Save">Save</button>
+                <mat-divider [vertical]="true"></mat-divider>
+                <button type="button" (click)="goBack()" class="action-btn" title="Cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+</ng-template>

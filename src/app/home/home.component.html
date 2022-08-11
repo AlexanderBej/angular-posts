@@ -1,0 +1,55 @@
+<div class="loader" *ngIf="!postsLoaded; else loaded">
+    <app-spinner [diameter]="200"></app-spinner>
+</div>
+
+<ng-template #loaded>
+    <section class="main-page">
+        <div class="filter-container">
+            <div class="search-sort">
+                <mat-form-field appearance="outline" class="search-field">
+                    <mat-label>Search posts</mat-label>
+                    <input type="search" matInput [(ngModel)]="searchText" placeholder="Search for posts"
+                        title="Search for posts">
+                    <span matPrefix class="material-symbols-outlined search-icon">search</span>
+                </mat-form-field>
+                <div class="sort-container">
+                    <div class="sort-box criteria">
+                        <span class="sort-label">sort by</span>
+                        <mat-button-toggle-group class="sort-toggle" #criteriaGroup="matButtonToggleGroup"
+                            [value]="criteria" (change)="onSortCriteriaChange(criteriaGroup.value)"
+                            name="criteriaToggle" aria-label="Criteria Toggle">
+                            <mat-button-toggle class="toggle-value" [value]="'id'" title="Sort by ID">ID
+                            </mat-button-toggle>
+                            <mat-button-toggle class="toggle-value" [value]="'title'" title="Sort by title">Title
+                            </mat-button-toggle>
+                        </mat-button-toggle-group>
+                    </div>
+                    <div class="sort-box order">
+                        <span class="sort-label">order</span>
+                        <mat-button-toggle-group class="sort-toggle" #orderGroup="matButtonToggleGroup" [value]="order"
+                            (change)="onSortOrderChange(orderGroup.value)" name="orderToggle" aria-label="Order Toggle">
+                            <mat-button-toggle class="toggle-value" [value]="'asc'" title="Sort ascending">ASC
+                            </mat-button-toggle>
+                            <mat-button-toggle class="toggle-value" [value]="'desc'" title="Sort descending">DESC
+                            </mat-button-toggle>
+                        </mat-button-toggle-group>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pagination-controls">
+                <pagination-controls (pageChange)="page = $event"></pagination-controls>
+            </div>
+        </div>
+
+        <div class="cards-container">
+            <mat-card *ngIf="page === 1" title="Add new post" (click)="addNewPost()">
+                <span class="material-symbols-outlined">add</span>
+            </mat-card>
+
+            <app-post-card
+                *ngFor="let post of allPosts | filter: searchText | paginate: { itemsPerPage: 10, currentPage: page, totalItems: total }"
+                [post]="post"></app-post-card>
+        </div>
+    </section>
+</ng-template>

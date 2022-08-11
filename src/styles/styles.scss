@@ -1,0 +1,10 @@
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+/* Importing SCSS files */
+@import "./variables.scss";
+@import "./buttons.scss";
+@import "./global.scss";
+@import "./modal.scss";
+@import "./pagination.scss";
+@import "./toasts.scss";
